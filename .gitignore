@@ -18,3 +18,9 @@
 # Ignore Pow-related files
 /.powenv
 /.powrc
+
+# Ignore .env, because security
+/.env
+
+# Ignore uploads
+/public/uploads

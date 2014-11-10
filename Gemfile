@@ -29,6 +29,12 @@ gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
 
 gem 'devise'
+gem 'carrierwave'
+gem 'carrierwave_direct'
+
+group :development do
+  gem 'dotenv-rails'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
