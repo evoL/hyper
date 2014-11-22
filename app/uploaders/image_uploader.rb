@@ -12,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Overridden by carrierwave_direct with "/uploads/<unique_guid>/foo.png"
   def store_dir
-    "uploads/#{model.id}"
+    "uploads"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
