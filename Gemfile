@@ -6,7 +6,7 @@ gem 'rails', '4.1.7'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', github: 'rails/sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -31,6 +31,8 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'carrierwave'
 gem 'carrierwave_direct'
+
+gem 'font-awesome-rails'
 
 group :development do
   gem 'dotenv-rails'
