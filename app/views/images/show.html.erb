@@ -11,9 +11,17 @@
     </div>
   </div>
   <div class="four columns right">
-    <section class="section box half-pad">
-      <h2 class="section__title">Image URL</h2>
-      <code class="url-area quarter-gap quarter-pad"><%= image_url(@image) %></code>
-    </section>
+    <div class="box">
+      <section class="section half-pad">
+        <h2 class="section__title">Image URL</h2>
+        <code class="url-area quarter-gap quarter-pad"><%= short_image_url(@image) %></code>
+      </section>
+      <section class="section half-pad">
+        <h2 class="section__title">Direct URL</h2>
+        <code class="url-area quarter-gap quarter-pad"><%= short_image_url(@image, format: :png) %></code>
+      </section>
+    </div>
+
+    
   </div>
 </div>
