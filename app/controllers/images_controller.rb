@@ -18,6 +18,15 @@ class ImagesController < ApplicationController
     end
   end
 
+  def show
+    @image = Image.find_by!(slug: params[:slug])
+
+    respond_to do |format|
+      format.html { render }
+      format.png { redirect_to @image.resource.url }
+    end
+  end
+
   private
 
   def image_params

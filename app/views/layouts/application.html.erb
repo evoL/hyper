@@ -4,14 +4,30 @@
   <title>Hyper</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- <link rel="stylesheet" href="http://basehold.it/24"> -->
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<header class="main-header">
+  <div class="grid-container">
+    <%= link_to 'Hyper', root_path, class: 'main-header__root' %>
 
-<%= yield %>
+    <div class="right">
+      <%= link_to new_image_path do %>
+        <%= fa_icon 'upload 2x' %>
+      <% end %>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="grid-container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </div>
+</main>
 
 </body>
 </html>

@@ -1,7 +1,15 @@
-<h1>Images!</h1>
+<div class="row">
+  <% if @images.empty? %>
+    <p class="tagline">No pictures. Sad.</p>
+  <% else %>
+    <p class="tagline">Just look at those shiny pictures!</p>
 
-<% @images.each do |image| %>
-  <div class="image">
-    <img src="<%= image.resource.url %>" alt="<%= image.title %>">
-  </div>
-<% end %>
+    <% @images.each do |image| %>
+      <div class="thumbnail two columns">
+        <%= link_to image do %>
+          <%= image_tag image.resource.url, alt: image.title %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

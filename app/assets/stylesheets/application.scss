@@ -1,0 +1,214 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+$primary-color-50:  #FBE9E7;
+$primary-color-100: #FFCCBC;
+$primary-color-400: #FF7043;
+$primary-color-500: #FF5722;
+$primary-color-600: #F4511E;
+$primary-color-800: #D84315;
+$primary-color-900: #BF360C;
+
+$black:             #000;
+$white:             #fff;
+
+$primary-text-color:   rgba($black, 0.87);
+$secondary-text-color: rgba($black, 0.54);
+$divider-color:        rgba($black, 0.12);
+
+$font-size: 16px;
+$line-height: 24px;
+
+$spacers: (quarter: 0.25, half: 0.5, std: 1, mid: 1.5, double: 2);
+$base-dimension: $line-height;
+
+@function line-height-for($font-size) {
+  @return ceil($font-size / $line-height) * $line-height;
+}
+
+@function dimension($key) {
+  @return map-get($spacers, $key) * $base-dimension;
+}
+
+@mixin absolute-font-size($size) {
+  font-size: $size;
+  line-height: line-height-for($size);
+}
+
+@mixin relative-font-size($factor) {
+  font-size: $font-size * $factor;
+  line-height: line-height-for($font-size * $factor);
+}
+
+body, p, h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $primary-color-50;
+  color: $primary-text-color;
+
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+a:link {
+  color: $primary-color-500;
+}
+a:visited {
+  color: $primary-color-800;
+}
+a:hover {
+  color: $primary-color-400;
+}
+
+img {
+  max-width: 100%;
+}
+
+///////////////////////////////////////////////////////////////////// Utilities
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@each $name, $factor in $spacers {
+  .#{$name}-gap { margin-top: $base-dimension * $factor; }
+  .#{$name}-vpad {
+    padding-top: $base-dimension * $factor;
+    padding-bottom: $base-dimension * $factor;
+  }
+  .#{$name}-hpad {
+    padding-left: $base-dimension * $factor;
+    padding-right: $base-dimension * $factor; 
+  }
+  .#{$name}-pad {
+    padding: $base-dimension * $factor;
+  }
+}
+
+.gap  { @extend .std-gap;  }
+.pad  { @extend .std-pad;  }
+.vpad { @extend .std-vpad; }
+.hpad { @extend .std-hpad; }
+
+////////////////////////////////////////////////////////////////////////// Grid
+
+.grid-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.row {
+  @extend .clearfix;
+}
+
+$order: one two three four five six seven eight nine ten eleven twelve;
+
+.column, .columns {
+  padding: 0 dimension(half);
+  box-sizing: border-box;
+  float: left;
+
+  @for $i from 1 through 12 {
+    $word: nth($order, $i);
+    &.#{$word}      { width:       100% * ($i / 12); }
+    &.push-#{$word} { margin-left: 100% * ($i / 12); }
+  }
+}
+
+//////////////////////////////////////////////////////////////////// Components
+
+.box {
+  background: $white;
+  box-shadow: 0 1px 2px rgba($black, 0.15);
+  box-sizing: border-box;
+}
+
+.main-header {
+  background: $primary-color-500;
+  color: $white;
+  -webkit-font-smoothing: antialiased;
+
+  a {
+    display: inline-block;
+    padding: 0 dimension(half);
+    line-height: 2 * $line-height;
+  }
+  a:link, a:visited, a:hover {
+    color: $white;
+  }
+  a:hover {
+    background: $primary-color-800;
+  }
+
+  .fa {
+    position: relative;
+    top: 5px;
+  }
+}
+  .main-header__root {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-decoration: none;
+  }
+
+.tagline {
+  font-size: 4em;
+  font-weight: bold;
+  line-height: 8 * $line-height;
+  text-align: center;
+}
+
+.image__title {
+  @include relative-font-size(1.8);
+}
+.image__date {
+  color: $secondary-text-color;
+  @include relative-font-size(0.75);
+}
+
+.section__title {
+  @include relative-font-size(1.2);
+}
+
+.url-area {
+  display: block;
+  border: 1px solid $divider-color;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba($black, 0.07);
+}

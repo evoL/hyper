@@ -1,0 +1,19 @@
+<div class="row gap">
+  <div class="eight columns">
+    <div class="image">
+      <header class="image__header">
+        <h1 class="image__title"><%= @image.title %></h1>
+        <div class="image__date"><%= @image.created_at %></div>
+      </header>
+      <article class="image__resource gap">
+        <%= image_tag @image.resource.url %>
+      </article>
+    </div>
+  </div>
+  <div class="four columns right">
+    <section class="section box half-pad">
+      <h2 class="section__title">Image URL</h2>
+      <code class="url-area quarter-gap quarter-pad"><%= image_url(@image) %></code>
+    </section>
+  </div>
+</div>
