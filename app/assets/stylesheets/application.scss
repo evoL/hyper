@@ -195,7 +195,7 @@ $order: one two three four five six seven eight nine ten eleven twelve;
 }
 
 .image__title {
-  @include relative-font-size(1.8);
+  @include relative-font-size(2.2);
 }
 .image__date {
   color: $secondary-text-color;
