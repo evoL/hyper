@@ -30,7 +30,7 @@ gem 'rails_12factor', group: :production
 
 gem 'devise'
 gem 'carrierwave'
-gem 'carrierwave_direct'
+gem 'cloudinary'
 
 gem 'font-awesome-rails'
 

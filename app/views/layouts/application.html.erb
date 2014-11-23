@@ -29,5 +29,22 @@
   </div>
 </main>
 
+<div class="uploader">
+  <div class="uploader__overlay"></div>
+  <div class="uploader__content box half-pad">
+    <h2 class="text-center uploader__title">Upload some images.</h2>
+    <a class="uploader__close" title="Close"><%= fa_icon 'close' %></a>
+
+    <%= form_for(Image.new) do |f| %>
+      <%= f.cl_image_upload :resource, multiple: true %>
+
+      <div class="field">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= cloudinary_js_config %>
 </body>
 </html>
